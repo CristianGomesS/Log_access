@@ -151,7 +151,7 @@ class AccessLogMiddleware
         if (empty($allowedRoles)) {
             return true;
         }else{
-            return in_array($user->id_profile, $allowedRoles);
+            return in_array($user->profile_id, $allowedRoles);
         }
     }
 

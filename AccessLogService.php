@@ -90,8 +90,8 @@ class AccessLogService
      */
     public function returnLogComplete($user, $unity, $statusDescription, $verbDescription, $routeDescription, $responseDescription)
     {
-        $userName  = $user->name_user ?? 'desconhecido';
-        $unityName = $unity->unity_name ?? 'desconhecido';
+        $userName  = $user->name ?? 'desconhecido';
+        $unityName = $unity->name ?? 'desconhecido';
 
         return "O(A) {$userName} do(a) {$unityName}, {$verbDescription} {$routeDescription} {$responseDescription}";
     }

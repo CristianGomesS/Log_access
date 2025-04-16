@@ -20,7 +20,7 @@ class LogController extends Controller
      *
      * @var AccessLogService
      */
-    protected AccessLogService $accessLogService;
+    protected  $accessLogService;
 
     /**
      * Injeta o serviço via construtor.

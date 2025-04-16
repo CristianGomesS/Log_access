@@ -178,10 +178,15 @@ class AccessLogService
 
         $default = $response->message ?? 'com sucesso.';
 
-        return match ($method) {
-            'GET', 'POST', 'PUT', 'DELETE' => $default,
-            default => 'verbo desconhecido',
-        };
+        switch (strtoupper($method)) {
+            case 'GET':
+            case 'POST':
+            case 'PUT':
+            case 'DELETE':
+                return $default;
+            default:
+                return 'verbo desconhecido';
+        }
     }
 
     /**

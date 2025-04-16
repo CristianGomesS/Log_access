@@ -67,7 +67,7 @@ class AccessLogService
 
             // Tenta recuperar usuário e unidade
             $user  = User::find($log->id_user);
-            $unity = $user ? Unity::find($user->id_unity_user) : null;
+            $unity = $user ? Unity::find($user->unity_id) : null;
 
             // Descrições com base em status, método e rota
             $statusDesc    = $this->getStatus((string) $log->status);

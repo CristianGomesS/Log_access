@@ -147,7 +147,7 @@ class AccessLogMiddleware
      */
     private function hasAccess($user): bool
     {
-        $allowedRoles = config('log_access_filter.has_profile_access');
+        $allowedRoles = config('log_access_filter.allowed_profiles');
         if (empty($allowedRoles)) {
             return true;
         }else{

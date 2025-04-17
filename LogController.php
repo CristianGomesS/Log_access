@@ -64,7 +64,7 @@ class LogController extends Controller
      */
     public function search(Request $request)
     {
-        $filters = $request->only(['user_name', 'start_date', 'end_date', 'method', 'status', 'path']);
+        $filters = $request->only(['name', 'start_date', 'end_date', 'method', 'status', 'path']);
 
         $logs = $this->accessLogService->searchLogs($filters);
 

@@ -194,6 +194,7 @@ class AccessLogService
      */
     public function searchLogs(array $filters)
     {
+
         $query = AccessLog::query()
             ->join('users', 'access_logs.id_user', '=', 'users.id')
             ->select('access_logs.*', 'users.name as name');
@@ -204,13 +205,19 @@ class AccessLogService
         }
 
         if (!empty($filters['start_date']) && !empty($filters['end_date'])) {
+            $filters['start_date'] = str_replace('/', '-', $filters['start_date']); //refatoração de data
+            $filters['end_date']   = str_replace('/', '-', $filters['end_date']);
             $query->whereBetween('access_logs.created_at', [
                 $filters['start_date'] . ' 00:00:00',
                 $filters['end_date'] . ' 23:59:59'
             ]);
         } elseif (!empty($filters['start_date'])) {
+            $filters['start_date'] = str_replace('/', '-', $filters['start_date']);
+            $filters['start_date'] = date('Y-m-d', strtotime($filters['start_date']));
             $query->whereDate('access_logs.created_at', '>=', $filters['start_date']);
         } elseif (!empty($filters['end_date'])) {
+            $filters['end_date']   = str_replace('/', '-', $filters['end_date']);
+            $filters['end_date']   = date('Y-m-d', strtotime($filters['end_date']));
             $query->whereDate('access_logs.created_at', '<=', $filters['end_date']);
         }
 

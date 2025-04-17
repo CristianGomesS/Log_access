@@ -196,11 +196,11 @@ class AccessLogService
     {
         $query = AccessLog::query()
             ->join('users', 'access_logs.id_user', '=', 'users.id')
-            ->select('access_logs.*', 'users.name_user as user_name');
+            ->select('access_logs.*', 'users.name as name');
 
         // Filtros
-        if (!empty($filters['user_name'])) {
-            $query->where('users.name', 'LIKE', '%' . $filters['user_name'] . '%');
+        if (!empty($filters['name'])) {
+            $query->where('users.name', 'LIKE', '%' . $filters['name'] . '%');
         }
 
         if (!empty($filters['start_date']) && !empty($filters['end_date'])) {
